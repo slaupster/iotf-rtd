@@ -114,6 +114,35 @@ An application may subscribe to commands being sent to one or more devices.
 	
 Subscribing to device status messages
 -------------------------------------------------------------------------------
+When devices connect and disconnect a status message is automatically published 
+to the device's iot-2/type/**device\_type**/id/**device\_id**/mon topic.
+
+The message payload is a json string with details of the event.  For example:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Example Status Message Payload
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: json
+
+    [
+        {
+   		"Action":"Disconnect",
+   		"Time":"2015-03-11T12:18:12.499Z",
+   		"ClientAddr":"x.x.x.x",
+   		"ClientID":"d:<org>:<device_type>:<device_id>",
+   		"Port":8883,
+   		"Protocol":"mqtt4-tcp",
+   		"User":"use-token-auth",
+   		"ConnectTime":"2015-03-11T12:18:11.723Z",
+   		"Reason":"The connection has completed normally.",
+   		"ReadBytes":142,
+   		"ReadMsg":1,
+   		"WriteBytes":4,
+   		"WriteMsg":0
+	}
+    ]
+
 An application may subscribe to monitor status of one or more devices.
 
 -  Subscribe to topic iot-2/type/**device\_type**/id/**device\_id**/mon
